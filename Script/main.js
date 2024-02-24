@@ -6,7 +6,26 @@
  */
 let slideIndex = 0;
 
-
+const blogdata = [
+    {
+        "title": "Empowering Local Communities Through Volunteerism",
+        "imageSrc": "./images/blogvolunteer.jpg",
+        "summary": "Explore the impact of volunteer work in building stronger local communities. Learn about inspiring stories and initiatives that make a difference.",
+        "link": "article1.html"
+    },
+    {
+        "title": "Community Gardening: Cultivating Unity and Sustainability",
+        "imageSrc": "./images/bloggardening.jpg",
+        "summary": "Discover the positive impact of community gardening on fostering unity and sustainability. Learn about the benefits and success stories of communal green spaces.",
+        "link": "article2.html"
+    },
+    {
+        "title": "Digital Inclusion: Bridging Gaps in Community Connectivity",
+        "imageSrc": "./images/blogdigitalinclusion.jpg",
+        "summary": "Explore how digital inclusion initiatives are bridging gaps in community connectivity. Learn about programs that empower individuals through technology.",
+        "link": "article3.html"
+    }
+]
 /**
  * This is a function which will show the slide show of the images
  */
@@ -41,8 +60,11 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    const projectList = document.getElementById("project-list");
-    const loadMoreButton = document.getElementById("load-more");
+
+
+    const projectList = $("#project-list");
+    const loadMoreButton = $("#load-more");
+
     let projectsData = [
         {
             title: "Kids Coding Camp",
@@ -74,39 +96,27 @@ document.addEventListener("DOMContentLoaded", function () {
             imageSrc: "./images/localartshowcase.jpg"
         }
     ];
+
     const projectsPerPage = 4;
     let projectsToShow = projectsData.slice(0, projectsPerPage);
 
-    /**
-     * this takes the project data and spits out cards
-     * @param project the actual project data
-     * @returns {HTMLDivElement}
-     */
     function createProjectCard(project) {
-        const card = document.createElement("div");
-        card.className = "project-card";
-        card.innerHTML = `
+        const card = $("<div>").addClass("project-card");
+        card.html(`
             <img src="${project.imageSrc}" alt="${project.title}">
             <h3>${project.title}</h3>
             <p>${project.description}</p>
-        `;
+        `);
         return card;
     }
 
-    /**
-     * It takes the project data and it renders it
-     * @param projects the actual project data
-     */
     function renderProjects(projects) {
-        projects.forEach((project) => {
+        $.each(projects, function(index, project) {
             const card = createProjectCard(project);
-            projectList.appendChild(card);
+            projectList.append(card);
         });
     }
 
-    /**
-     * It takes the project data and displays it when we hit load more
-     */
     function loadMoreProjects() {
         const remainingProjects = projectsData.slice(projectsToShow.length, projectsToShow.length + projectsPerPage);
         projectsToShow = projectsToShow.concat(remainingProjects);
@@ -114,15 +124,103 @@ document.addEventListener("DOMContentLoaded", function () {
         renderProjects(remainingProjects);
 
         if (projectsToShow.length === projectsData.length) {
-            loadMoreButton.style.display = "none";
+            loadMoreButton.hide();
         }
     }
 
-    loadMoreButton.addEventListener("click", loadMoreProjects);
-
-    // Initial rendering of projects
+    loadMoreButton.on("click", loadMoreProjects);
     renderProjects(projectsToShow);
+
+    const projectJokes = document.getElementById("project-joke-lists");
+
+    function createJokeCard(joke) {
+        const card = document.createElement("div");
+        card.className = "project-joke-card";
+        card.innerHTML = `
+            <h3>${joke.setup}</h3>
+            <p>${joke.delivery}</p>
+        `;
+        console.log("ewe", joke)
+        return card;
+    }
+
+    function fetchDataFromAPI(apiUrl) {
+        return $.ajax({
+            url: apiUrl,
+            method: 'GET',
+            dataType: 'json'
+        });
+    }
+
+    function renderJokes(jokes) {
+        jokes.forEach(joke => {
+            if (joke?.setup != undefined || joke?.delivery != undefined ) {
+                const card = createJokeCard(joke);
+                projectJokes.appendChild(card);
+                console.log(joke)
+            }
+
+        });
+    }
+
+    function getJokes() {
+        var apiUrl = 'https://v2.jokeapi.dev/joke/Programming,Miscellaneous,Pun,Spooky,Christmas?amount=20';
+        return fetchDataFromAPI(apiUrl).then(function(data) {
+            return data.jokes || [];
+        });
+    }
+
+    getJokes().then(function(jokes) {
+
+            renderJokes(jokes);
+
+    }).catch(function(error) {
+        console.error('Error fetching API data:', error);
+    });
+
+    // const projectQuotes = document.getElementById("project-quotes-lists");
+    //
+    // function createQuoteCard(quote) {
+    //     const card = document.createElement("div");
+    //     card.className = "project-card-quote";
+    //     card.innerHTML = `
+    //         <h3>${quote.text}</h3>
+    //         <p>${quote.author || 'Unknown'}</p>
+    //     `;
+    //     return card;
+    // }
+    //
+    // function fetchDataFromAPIQ(apiUrl) {
+    //     return $.ajax({
+    //         url: apiUrl,
+    //         method: 'GET',
+    //         dataType: 'json'
+    //     });
+    // }
+    //
+    // function renderQuotes(quotes) {
+    //     quotes.forEach(quote => {
+    //         const card = createQuoteCard(quote);
+    //         projectQuotes.appendChild(card);
+    //     });
+    // }
+    //
+    // function getQuotes() {
+    //     var apiUrl = 'https://type.fit/api/quotes';
+    //     return fetchDataFromAPIQ(apiUrl).then(function(data) {
+    //         console.log(data)
+    //         return data || [];
+    //     });
+    // }
+    //
+    // getQuotes().then(function(quotes) {
+    //     renderQuotes(quotes);
+    // }).catch(function(error) {
+    //     console.error('Error fetching API data:', error);
+    // });
+
 });
+
 
 
 
@@ -237,8 +335,20 @@ document.addEventListener("DOMContentLoaded", function () {
         careersLink.classList.add("nav-item");
         careersLink.innerHTML = '<a class="nav-link" href="careers.html"><i class="fa-solid fa-briefcase"></i> Careers</a>';
 
+        const GalleryLink = document.createElement("li");
+        GalleryLink.classList.add("nav-item");
+        GalleryLink.innerHTML = '<a class="nav-link" href="Gallery1.html"><i class="fa-solid fa-image"></i> Gallery </a>';
+
+        const HumorLink = document.createElement("li");
+        HumorLink.classList.add("nav-item");
+        HumorLink.innerHTML = '<a class="nav-link" href="Humour.html"><i class="fa-solid fa-face-smile"></i> Humour </a>';
+
         const navbarLinks = document.querySelector(".navbar-nav");
         navbarLinks.appendChild(careersLink);
+        const navbarLinksgal = document.querySelector(".navbar-nav");
+        navbarLinks.appendChild(GalleryLink)
+        const navbarHumorLink = document.querySelector(".navbar-nav");
+        navbarLinks.appendChild(HumorLink)
 
         // Programmatically change 'Blog' link to 'News'
         const blogLink = document.querySelector(".nav-link[href='blog.html']");
@@ -380,3 +490,108 @@ function validateForm() {
     }
     return false
 }
+
+// Define a function to make API request and handle data
+
+
+// Define a function to handle the retrieved data
+function handleData(data) {
+    // Iterate through each item in the response data
+    $.each(data, function(index, item) {
+        // Create HTML elements to display title and description
+        var title = '<h2>' + item.title + '</h2>';
+        var description = '<p>' + item.description + '</p>';
+
+        // Append title and description to the #api-data div
+        $('#project-card-joke').append(title + description);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    const searchInput = $("#search-input");
+    const searchResults = $("#search-results");
+
+
+    displayResults(blogdata);
+
+    // Event listener for search input
+    searchInput.on("input", function() {
+        const query = searchInput.val().trim().toLowerCase();
+        const filteredResults = filterResults(blogdata, query);
+        displayResults(filteredResults);
+    });
+
+    // Function to filter results based on search query
+    function filterResults(results, query) {
+        if (!query) {
+            return results; // If no query, return all results
+        }
+        return results.filter(function(result) {
+            return result.title.toLowerCase().includes(query);
+        });
+    }
+
+    // Function to display results
+    function displayResults(results) {
+        searchResults.empty();
+        if (results.length > 0) {
+            $.each(results, function(index, result) {
+                const resultElement = $("<div>").addClass("result-card");
+                resultElement.html(`
+                    <img src="${result.imageSrc}" alt="${result.title}">
+                    <h3>${result.title}</h3>
+                    <p>${result.summary}</p>
+                `);
+                searchResults.append(resultElement);
+            });
+        } else {
+            searchResults.html("<p>No results found.</p>");
+        }
+    }
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const galleryItems = document.querySelectorAll(".gallery-item img");
+    const lightbox = document.querySelector(".lightbox");
+    const lightboxImg = document.querySelector(".lightbox-img");
+    const closeBtn = document.querySelector(".close-btn");
+    const prevBtn = document.querySelector(".prev-btn");
+    const nextBtn = document.querySelector(".next-btn");
+
+    let currentIndex = 0;
+
+    // Open lightbox when clicking on thumbnail
+    galleryItems.forEach((item, index) => {
+        item.addEventListener("click", function() {
+            currentIndex = index;
+            showImage(index);
+            lightbox.style.display = "block";
+        });
+    });
+
+    // Close lightbox when clicking close button
+    closeBtn.addEventListener("click", function() {
+        lightbox.style.display = "none";
+    });
+
+    // Show previous image
+    prevBtn.addEventListener("click", function() {
+        currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+        showImage(currentIndex);
+    });
+
+    // Show next image
+    nextBtn.addEventListener("click", function() {
+        currentIndex = (currentIndex + 1) % galleryItems.length;
+        showImage(currentIndex);
+    });
+
+    // Show image in lightbox
+    function showImage(index) {
+        const imgUrl = galleryItems[index].getAttribute("src");
+        const imgAlt = galleryItems[index].getAttribute("alt");
+        lightboxImg.setAttribute("src", imgUrl);
+        lightboxImg.setAttribute("alt", imgAlt);
+    }
+});

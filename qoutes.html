@@ -2,14 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="author" content="Asish and Fouzaan">
+    <meta name="author" content="Fouzaan Ahmed and Ashesh Dhakal">
 
-    <title>Blog</title>
+    <title>Portfolio</title>
 
     <!-- CSS Section -->
     <link rel="stylesheet" href="./Content/style.css">
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./node_modules/@fortawesome/fontawesome-free/css/all.css">
+
+    <script src="./Script/main.js" defer></script>
 
 </head>
 <body class="bg-black">
@@ -17,7 +19,7 @@
 <header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html"><i class="fa-solid fa-users"></i> Harmony Hub</a>
+            <a class="navbar-brand" href="index.html"><i class="fas fa-user-friends"></i> Harmony Hub</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -27,19 +29,19 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page"
-                           href="index.html"><i class="fa-solid fa-house-chimney"></i> Home</a>
+                           href="index.html"><i class="fas fa-home"></i> Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="portfolio.html"><i class="fa-solid fa-folder"></i> Portfolio</a>
+                        <a class="nav-link active" href="portfolio.html"><i class="fas fa-briefcase"></i> Portfolio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="services.html"><i class="fa-solid fa-handshake"></i> Services</a>
+                        <a class="nav-link" href="services.html"><i class="fas fa-cogs"></i> Services</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="team.html"><i class="fa-solid fa-people-group"></i> Team</a>
+                        <a class="nav-link" href="team.html"><i class="fas fa-users"></i> Team</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="blog.html"><i class="fa-solid fa-book-open-reader"></i> Blog</a>
+                        <a class="nav-link" href="blog.html"><i class="fas fa-newspaper"></i> Blog</a>
                     </li>
                 </ul>
             </div>
@@ -47,23 +49,23 @@
     </nav>
 </header>
 
+<!-- Portfolio Section -->
 <section id="portfolio" class="bg-dark text-white py-5">
     <div class="container text-center">
-        <h1>Latest Articles</h1>
-        <p>
-            Discover the latest in tech and design at Harmony Hub's Blog. Stay informed with insights, trends, and expert stories. Explore creativity and innovation in just a few clicks
-        </p>
+        <h2>Happy content for today</h2>
+        <p class="lead">These are some of our jokes and cooking recipies.</p>
     </div>
+
+
+
 </section>
 
-<div class="container text-center">
-    <input type="text" id="search-input" placeholder="Search...">
-    <button id="search-button">Search</button>
-</div>
+<section id="project-quotes-lists"></section>
+<button id="load-more">Load More</button>
 
-<section  class="container">
-<div id="search-results"></div>
-</section>
+<br>
+<br>
+<br>
 
 
 
