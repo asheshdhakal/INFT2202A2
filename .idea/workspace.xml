@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="013d5327-5171-48b6-8af6-8b380924ff55" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
+=======
+      <change beforePath="$PROJECT_DIR$/Careers.html" beforeDir="false" afterPath="$PROJECT_DIR$/careers.html" afterDir="false" />
+>>>>>>> 9ef1fd8eef3e1ebcd03c2c871f26cc2f12bc2b49
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +30,10 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "JavaScript Debug.register.html.executor": "Run",
+<<<<<<< HEAD
     "Node.js.main.js.executor": "Run",
+=======
+>>>>>>> 9ef1fd8eef3e1ebcd03c2c871f26cc2f12bc2b49
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
@@ -52,7 +59,11 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708836488175</updated>
+<<<<<<< HEAD
       <workItem from="1708836489310" duration="2285000" />
+=======
+      <workItem from="1708836489310" duration="1681000" />
+>>>>>>> 9ef1fd8eef3e1ebcd03c2c871f26cc2f12bc2b49
     </task>
     <servers />
   </component>
