@@ -1,0 +1,95 @@
+"use strict";
+
+(function (core) {
+    class User {
+        constructor(displayName = "", emailAddress = "", username = "", password = "") {
+            this._displayName = displayName;
+            this._emailAddress = emailAddress;
+            this._username = username;
+            this._password = password;
+        }
+
+        get displayName() {
+            return this._displayName;
+        }
+
+        set displayName(value) {
+            this._displayName = value;
+        }
+
+        get emailAddress() {
+            return this._emailAddress;
+        }
+
+        set emailAddress(value) {
+            this._emailAddress = value;
+        }
+
+        get username() {
+            return this._username;
+        }
+
+        set username(value) {
+            this._username = value;
+        }
+
+        get password() {
+            return this._password;
+        }
+
+        // toString method to return a string representation of the user
+        toString() {
+            return `DisplayName: ${this._displayName}\nEmailAddress: ${this._emailAddress}\nUsername: ${this._username}`;
+        }
+
+        /**
+         * Serializes the user object for storage or transmission.
+         * @returns {string} A JSON string representation of the user object.
+         */
+        serialize() {
+            return JSON.stringify({
+                DisplayName: this._displayName,
+                EmailAddress: this._emailAddress,
+                Username: this._username,
+                Password: this._password 
+            });
+        }
+
+        /**
+         * Deserializes the user data from a string.
+         * @param {string} data - The serialized user data.
+         */
+        deserialize(data) {
+            let obj = JSON.parse(data);
+            this._displayName = obj.DisplayName;
+            this._emailAddress = obj.EmailAddress;
+            this._username = obj.Username;
+            this._password = obj.Password;
+        }
+
+        /**
+         * Populates the user instance's properties from a JSON object.
+         * @param {Object} data - The JSON object containing user data.
+         */
+        fromJSON(data) {
+            this._displayName = data.DisplayName;
+            this._emailAddress = data.EmailAddress;
+            this._username = data.Username;
+            this._password = data.Password;
+        }
+
+        /**
+         * Converts the user instance to a JSON object.
+         * @returns {Object} The JSON representation of the user.
+         */
+        toJSON() {
+            return {
+                DisplayName: this._displayName,
+                EmailAddress: this._emailAddress,
+                Username: this._username,
+                Password: this._password
+            };
+        }
+    }
+    core.User = User;
+})(window.core = window.core || {});

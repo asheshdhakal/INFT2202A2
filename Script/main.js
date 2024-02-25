@@ -1,5 +1,5 @@
 /**
- * Created by Asish and Fouzaan
+ * Created by Ashesh and Fouzaan
  * student id are: 100886468 and 100857977
  * date of completion is 26-01-2023
  *
@@ -329,6 +329,7 @@ document.addEventListener("DOMContentLoaded", function () {
  * An IIFY function doing the modification of dom elements
  */
 (function() {
+
     document.addEventListener("DOMContentLoaded", function () {
         // Dynamically add 'Careers' link
         const careersLink = document.createElement("li");
@@ -343,20 +344,53 @@ document.addEventListener("DOMContentLoaded", function () {
         HumorLink.classList.add("nav-item");
         HumorLink.innerHTML = '<a class="nav-link" href="Humour.html"><i class="fa-solid fa-face-smile"></i> Humour </a>';
 
+        const EventLink = document.createElement("li");
+        EventLink.classList.add("nav-item");
+        EventLink.innerHTML = '<a class="nav-link" href="Events.html"><i class="fa-solid fa-calendar-days"></i> Events </a>';
+
+
+        const LoginLink = document.createElement("li");
+        LoginLink.classList.add("nav-item");
+        LoginLink.innerHTML = '<a class="nav-link fas fa-sign-in-alt" id="login" href="login.html"></a>';
+
+
+
         const navbarLinks = document.querySelector(".navbar-nav");
         navbarLinks.appendChild(careersLink);
+        const navbareventLink = document.querySelector(".navbar-nav");
+        navbarLinks.appendChild(EventLink)
         const navbarLinksgal = document.querySelector(".navbar-nav");
         navbarLinks.appendChild(GalleryLink)
         const navbarHumorLink = document.querySelector(".navbar-nav");
         navbarLinks.appendChild(HumorLink)
+        const navbaraloginLink = document.querySelector(".navbar-nav");
+        navbarLinks.appendChild(LoginLink)
 
         // Programmatically change 'Blog' link to 'News'
         const blogLink = document.querySelector(".nav-link[href='blog.html']");
         blogLink.innerHTML = '<i class="fa-solid fa-newspaper"></i> News';
 
+
+
+
     });
 })();
 
+
+document.addEventListener("DOMContentLoaded", function () {
+    const user = sessionStorage.getItem("user");
+    const loginLink = document.getElementById("login");
+    if (user) {
+        const DynaLink = document.querySelector(".nav-link[href='login.html']");
+        DynaLink.innerHTML = '<i class="fa-solid fa-newspaper"></i> logout';
+        DynaLink.onclick = function() {
+            sessionStorage.clear();
+            location.href = "index.html";
+        };
+    } else {
+        loginLink.innerHTML = '<a class="nav-link" href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a>';
+    }
+})
 // main.js
 
 // Function to create the footer element
@@ -409,7 +443,7 @@ function createFooter() {
     const navItems = [
         { text: "Privacy Policy", icon: "fa-shield-halved", href: "privacypolicy.html" },
         { text: "Terms of Service", icon: "fa-envelope-open-text", href: "termsofservice.html" },
-        { text: "Contact", icon: "fa-inbox", href: "./contact.html" },
+        { text: "Feedback", icon: "fa-inbox", href: "./feedback.html" },
     ];
 
     // Loop through the navItems and create list items
@@ -593,5 +627,46 @@ document.addEventListener("DOMContentLoaded", function() {
         const imgAlt = galleryItems[index].getAttribute("alt");
         lightboxImg.setAttribute("src", imgUrl);
         lightboxImg.setAttribute("alt", imgAlt);
+    }
+});
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    // AJAX request to fetch events data from JSON file
+    $.ajax({
+        url: './Data/eventData.json',
+        dataType: 'json',
+        success: function(data) {
+            displayEvents(data);
+        },
+        error: function(xhr, status, error) {
+            console.error('Error fetching events data:', error);
+        }
+    });
+
+    // Function to display events as cards
+    function displayEvents(events) {
+        const eventCards = $('#event-cards');
+        eventCards.empty(); // Clear existing event cards
+
+        events.forEach(function(event) {
+            const card = createEventCard(event);
+            eventCards.append(card);
+        });
+    }
+
+    // Function to create an event card
+    function createEventCard(event) {
+        const card = $('<div>').addClass('event-card');
+        const cardContent = `
+            <div class="event-card-content">
+                <h3 class="event-title">${event.name}</h3>
+                <p class="event-address">${event.address}</p>
+                <p class="event-description">${event.description}</p>
+            </div>
+        `;
+        card.html(cardContent);
+        return  card;
     }
 });
