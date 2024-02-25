@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Fouzaan Ahmed and Ashesh Dhakal">
+
+    <title>Services</title>
+
+    <!-- CSS Section -->
+    <link rel="stylesheet" href="./Content/style.css">
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./node_modules/@fortawesome/fontawesome-free/css/all.css">
+
+</head>
+<body class="bg-black">
+
+<header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html"><i class="fas fa-user-friends"></i> Harmony Hub</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page"
+                           href="index.html"><i class="fas fa-home"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="portfolio.html"><i class="fas fa-briefcase"></i> Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="services.html">
+                            <i class="fas fa-cogs"></i> Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="team.html"><i class="fas fa-users"></i> Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html"><i class="fas fa-newspaper"></i> Blog</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Services Section -->
+<section id="services" class="bg-dark text-white py-5">
+    <div class="container text-center">
+        <h1>OUR SERVICES</h1>
+        <p>Discover the unique services offered by Harmony Hub to enhance our community. Click on each service to learn more.</p>
+    </div>
+</section>
+
+<div id="services-container" class="row">
+    <!-- Service 1: Art Corner -->
+    <div class="col-md-4">
+        <div class="service-tab card" data-toggle="modal" data-target="#serviceModal1">
+            <div class="service-title">Art Corner</div>
+            <div class="service-image-container">
+                <img class="service-image" src="./images/artcorner.jpg" alt="Art Corner Image">
+            </div>
+        </div>
+    </div>
+
+    <!-- Service 2: Relaxation Sessions -->
+    <div class="col-md-4">
+        <div class="service-tab card" data-toggle="modal" data-target="#serviceModal2">
+            <div class="service-title">Relaxation Sessions</div>
+            <div class="service-image-container">
+                <img class="service-image" src="./images/relaxationsessions.jpg" alt="Relaxation Sessions Image">
+            </div>
+        </div>
+    </div>
+
+    <!-- Service 3: Green Living Workshops -->
+    <div class="col-md-4">
+        <div class="service-tab card" data-toggle="modal" data-target="#serviceModal3">
+            <div class="service-title">Green Living Workshops</div>
+            <div class="service-image-container">
+                <img class="service-image" src="./images/greenworkshops.jpg" alt="Green Living Workshops Image">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Service Modals -->
+<div class="modal fade" id="serviceModal1" tabindex="-1" aria-labelledby="serviceModalLabel1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="serviceModalLabel1"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+            </div>
+            <div class="modal-body" id="serviceModalContent1"></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="serviceModal2" tabindex="-1" aria-labelledby="serviceModalLabel2" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="serviceModalLabel2"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+            </div>
+            <div class="modal-body" id="serviceModalContent2"></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="serviceModal3" tabindex="-1" aria-labelledby="serviceModalLabel3" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="serviceModalLabel3"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+            </div>
+            <div class="modal-body" id="serviceModalContent3"></div>
+        </div>
+    </div>
+</div>
+
+
+<br>
+<br>
+<br>
+
+
+<!-- Scripting Section -->
+<script src="./Script/main.js"></script>
+<script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="./node_modules/jquery/dist/jquery.min.js"></script>
+
+</body>
+</html>
