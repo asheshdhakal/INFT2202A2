@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="013d5327-5171-48b6-8af6-8b380924ff55" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Careers.html" beforeDir="false" afterPath="$PROJECT_DIR$/careers.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +29,7 @@
     "JavaScript Debug.register.html.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "master",
     "last_opened_file_path": "C:/Users/dhaka/OneDrive/Desktop/HarmonyHub (2)/HarmonyHub (3)/HarmonyHub (2)/HarmonyHub",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -51,7 +52,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708836488175</updated>
-      <workItem from="1708836489310" duration="1056000" />
+      <workItem from="1708836489310" duration="1681000" />
     </task>
     <servers />
   </component>
